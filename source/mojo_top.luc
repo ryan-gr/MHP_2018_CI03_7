@@ -1,0 +1,74 @@
+module mojo_top (
+    input clk,              // 50MHz clock
+    input rst_n,            // reset button (active low)
+    input cclk,             // configuration clock, AVR ready when high
+    output spi_miso,        // AVR SPI MISO
+    input led[8],
+    input spi_ss,           // AVR SPI Slave Select
+    input spi_mosi,         // AVR SPI MOSI
+    input spi_sck,          // AVR SPI Clock
+    output spi_channel [4], // AVR general purpose pins (used by default to select ADC channel)
+    input avr_tx,           // AVR TX (FPGA RX)
+    output avr_rx,          // AVR RX (FPGA TX)
+    input avr_rx_busy,      // AVR RX buffer full
+    output io_led [3][8],   // LEDs on IO Shield
+    output io_seg [8],      // 7-segment LEDs on IO Shield
+    output io_sel [4],      // Digit select on IO Shield
+    input io_button [5],    // 5 buttons on IO Shield
+    input io_dip [3][8], // DIP switches on IO Shield
+    input io_input[3],
+    output auto_output[3]          ) {
+  
+  sig rst;                  // reset signal
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    button_conditioner input_mode;
+    button_conditioner input_carry;
+    button_conditioner input_sum;
+    state_machine state_machine;
+    edge_detector edge_detector (#RISE(1), #FALL(0));    
+    
+        .rst(rst) {
+      multi_seven_seg seg_display; //Connecting to multi_seven_seg which would help displaying on the segment
+      multi_dec_ctr dec_ctr; //
+      counter ctr (#SIZE(1), #DIV(24));      
+
+                }
+  }
+  always {
+    io_led = io_dip; //Connect all dip switches to io_led   
+  //io_input are input ports declared in custom.ucf and input received is passed on to button_conditioner
+    input_carry.in = io_input[0]; 
+    input_sum.in = io_input[1];
+    input_mode.in = io_input[2];
+    reset_cond.in = io_button[1];
+  //Through the button button_conditioner, the inputs to fpga through the 3 io_input port are passed onto the state machines
+    state_machine.input_carry = input_carry.out; 
+    state_machine.input_sum = input_sum.out;
+    state_machine.input_mode = input_mode.out;
+    state_machine.rst = reset_cond.out; //Center button will reset state_machine
+    
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    state_machine.rst = reset_cond.out; //Center button will reset state_machine
+    rst = reset_cond.out;   // conditioned reset
+    spi_miso = bz;          // not using SPI
+    spi_channel = bzzzz;    // not using flags
+    avr_rx = bz;            // not using serial port
+    
+    edge_detector.in = ctr.value;
+    dec_ctr.inc = edge_detector.out;    
+    seg_display.values = state_machine.value; 
+    if(state_machine.modee == 0){
+        auto_output = io_dip[0][2:0];}
+    else{
+        auto_output = dec_ctr.bit_count;}
+    seg_display.decimal = 4b0000; //To control decimal point, i
+    io_seg = ~seg_display.seg;
+    io_sel = ~seg_display.sel;
+
+    
+  }
+}

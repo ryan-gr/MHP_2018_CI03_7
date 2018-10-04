@@ -1,0 +1,56 @@
+module state_machine (
+    input clk,  // clock
+    input rst,  // reset
+    output value[4][4], // display_value
+    input input_sum, // SUM input from mojo_top
+    input input_carry, // CARRY input from mojo_top
+    input input_mode, // mode_input from mojo_top
+    output modee[3]
+    ){
+  
+  .clk(clk){
+    .rst(rst){
+      fsm state = {MANUAL,AUTO};
+}
+    dff display_value[4][4]; // Size of LED segments
+    dff mode[3];
+    }
+  
+  
+always {
+    value = display_value.q; // output counter   
+    modee = mode.q;
+    case (state.q) { // FSM case statement
+      
+      state.MANUAL: // IDLE: not counting
+          mode.d = 0;
+          if (input_mode) 
+            {state.d = state.AUTO;}  
+          else if (input_sum & input_carry) // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d1, 4d9, 4d1, 4d1};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
+          else if (input_sum) // if SUM value is HIGH
+            {display_value.d = {4d1, 4d9, 4d0, 4d1};} // Display 1_01          
+          else if (input_carry) // if CARRY value is HIGH
+            {display_value.d = {4d1, 4d9, 4d1, 4d0};} // Display 1_10        
+          else
+            {display_value.d = {4d1, 4d9, 4d0, 4d0};} // Display 1_00    
+
+      state.AUTO: // RUNNING: increment counters
+          mode.d = 1;
+          if (!input_mode)
+            {state.d = state.MANUAL;}  
+          if (input_sum & input_carry) // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d2, 4d9, 4d1, 4d1};} // Display 2_11
+          else if (input_sum) // if SUM value is HIGH
+            {display_value.d = {4d2, 4d9, 4d0, 4d1};} // Display 2_01          
+          else if (input_carry) // if CARRY value is HIGH
+            {display_value.d = {4d2, 4d9, 4d1, 4d0};} // Display 2_10   
+          else
+            {display_value.d = {4d2, 4d9, 4d0, 4d0};} // Display 2_11
+        
+                    
+    }
+     }
+}
+  
+  

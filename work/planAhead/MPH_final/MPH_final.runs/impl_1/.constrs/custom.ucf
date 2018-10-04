@@ -1,0 +1,16 @@
+NET "io_input[0]" LOC = P40;
+NET "io_input[0]" IOSTANDARD = LVTTL;
+NET "io_input[0]" PULLDOWN;
+NET "io_input[1]" LOC = P50;
+NET "io_input[1]" IOSTANDARD = LVTTL;
+NET "io_input[1]" PULLDOWN;
+NET "io_input[2]" LOC = P51;
+NET "io_input[2]" IOSTANDARD = LVTTL;
+NET "io_input[2]" PULLDOWN;
+
+NET "auto_output[0]" LOC = P34;
+NET "auto_output[0]" IOSTANDARD = LVTTL;
+NET "auto_output[1]" LOC = P33;
+NET "auto_output[1]" IOSTANDARD = LVTTL;
+NET "auto_output[2]" LOC = P35;
+NET "auto_output[2]" IOSTANDARD = LVTTL;
