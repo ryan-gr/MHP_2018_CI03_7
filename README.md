@@ -7,7 +7,7 @@ Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates.
 ##Bonus
 Aim: To test our Full-adder both manually and automatically
 ###About FPGA
-FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing – hence "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL).
+FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing â€“ hence "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL).
 
 FPGAs contain an array of programmable logic blocks, and a hierarchy of reconfigurable interconnects that allow the blocks to be "wired together", like many logic gates that can be inter-wired in different configurations. Logic blocks can be configured to perform complex combinational functions, or merely simple logic gates like AND and XOR. In most FPGAs, logic blocks also include memory elements, which may be simple flip-flops or more complete blocks of memory. 
 https://en.wikipedia.org/wiki/Field-programmable_gate_array 
@@ -56,4 +56,6 @@ Project brought to you by
 1002744 Ivan Chuang
 1002769 Ryan Yu
 1002845 Tee Zhi Yao
+
+
 1003031 Tan Zhao Tong
