@@ -1,11 +1,11 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Oct 03 17:31:04 2018
+// Written by: Map P.20131013 on Thu Oct 04 16:14:20 2018
 //! **************************************************************************
 
 SCHEMATIC START;
 CONFIG VCCAUX = "3.3";
 COMP "auto_output[0]" LOCATE = SITE "P34" LEVEL 1;
-COMP "auto_output[1]" LOCATE = SITE "P33" LEVEL 1;
+COMP "auto_output[1]" LOCATE = SITE "P32" LEVEL 1;
 COMP "auto_output[2]" LOCATE = SITE "P35" LEVEL 1;
 COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "io_button(0)" LOCATE = SITE "P137" LEVEL 1;
@@ -91,18 +91,18 @@ COMP "io_led[17]" LOCATE = SITE "P16" LEVEL 1;
 COMP "io_led[18]" LOCATE = SITE "P17" LEVEL 1;
 COMP "io_led[19]" LOCATE = SITE "P21" LEVEL 1;
 COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
-TIMEGRP clk = BEL "input_mode/M_ctr_q_1" BEL "input_mode/M_ctr_q_2" BEL
-        "input_mode/M_ctr_q_3" BEL "input_mode/M_ctr_q_4" BEL
-        "input_mode/M_ctr_q_5" BEL "input_mode/M_ctr_q_6" BEL
-        "input_mode/M_ctr_q_7" BEL "input_mode/M_ctr_q_8" BEL
-        "input_mode/M_ctr_q_9" BEL "input_mode/M_ctr_q_10" BEL
-        "input_mode/M_ctr_q_11" BEL "input_mode/M_ctr_q_12" BEL
-        "input_mode/M_ctr_q_13" BEL "input_mode/M_ctr_q_14" BEL
-        "input_mode/M_ctr_q_15" BEL "input_mode/M_ctr_q_16" BEL
-        "input_mode/M_ctr_q_17" BEL "input_mode/M_ctr_q_18" BEL
-        "input_mode/M_ctr_q_19" BEL "input_mode/M_ctr_q_0" BEL
+TIMEGRP clk = BEL "input_mode/M_ctr_q_0" BEL "input_mode/M_ctr_q_1" BEL
+        "input_mode/M_ctr_q_2" BEL "input_mode/M_ctr_q_3" BEL
+        "input_mode/M_ctr_q_4" BEL "input_mode/M_ctr_q_5" BEL
+        "input_mode/M_ctr_q_6" BEL "input_mode/M_ctr_q_7" BEL
+        "input_mode/M_ctr_q_8" BEL "input_mode/M_ctr_q_9" BEL
+        "input_mode/M_ctr_q_10" BEL "input_mode/M_ctr_q_11" BEL
+        "input_mode/M_ctr_q_12" BEL "input_mode/M_ctr_q_13" BEL
+        "input_mode/M_ctr_q_14" BEL "input_mode/M_ctr_q_15" BEL
+        "input_mode/M_ctr_q_16" BEL "input_mode/M_ctr_q_17" BEL
+        "input_mode/M_ctr_q_18" BEL "input_mode/M_ctr_q_19" BEL
         "input_mode/sync/M_pipe_q_1" BEL "input_mode/sync/Mshreg_M_pipe_q_1"
-        BEL "clk_BUFGP/BUFG" BEL "state_machine/M_display_value_q_12" BEL
+        BEL "clk_BUFGP/BUFG" BEL "state_machine/M_display_value_q_11" BEL
         "state_machine/M_display_value_q_8" BEL
         "state_machine/M_display_value_q_4" BEL
         "state_machine/M_display_value_q_0" BEL "state_machine/M_state_q" BEL
@@ -112,38 +112,71 @@ TIMEGRP clk = BEL "input_mode/M_ctr_q_1" BEL "input_mode/M_ctr_q_2" BEL
         "ctr/M_ctr_q_23" BEL "ctr/M_ctr_q_24" BEL "reset_cond/M_stage_q_3" BEL
         "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
         "reset_cond/M_stage_q_0" BEL "edge_detector/M_last_q" BEL
-        "input_sum/M_ctr_q_1" BEL "input_sum/M_ctr_q_2" BEL
-        "input_sum/M_ctr_q_3" BEL "input_sum/M_ctr_q_4" BEL
-        "input_sum/M_ctr_q_5" BEL "input_sum/M_ctr_q_6" BEL
-        "input_sum/M_ctr_q_7" BEL "input_sum/M_ctr_q_8" BEL
-        "input_sum/M_ctr_q_9" BEL "input_sum/M_ctr_q_10" BEL
-        "input_sum/M_ctr_q_11" BEL "input_sum/M_ctr_q_12" BEL
-        "input_sum/M_ctr_q_13" BEL "input_sum/M_ctr_q_14" BEL
-        "input_sum/M_ctr_q_15" BEL "input_sum/M_ctr_q_16" BEL
-        "input_sum/M_ctr_q_17" BEL "input_sum/M_ctr_q_18" BEL
-        "input_sum/M_ctr_q_19" BEL "input_sum/M_ctr_q_0" BEL
+        "input_sum/M_ctr_q_0" BEL "input_sum/M_ctr_q_1" BEL
+        "input_sum/M_ctr_q_2" BEL "input_sum/M_ctr_q_3" BEL
+        "input_sum/M_ctr_q_4" BEL "input_sum/M_ctr_q_5" BEL
+        "input_sum/M_ctr_q_6" BEL "input_sum/M_ctr_q_7" BEL
+        "input_sum/M_ctr_q_8" BEL "input_sum/M_ctr_q_9" BEL
+        "input_sum/M_ctr_q_10" BEL "input_sum/M_ctr_q_11" BEL
+        "input_sum/M_ctr_q_12" BEL "input_sum/M_ctr_q_13" BEL
+        "input_sum/M_ctr_q_14" BEL "input_sum/M_ctr_q_15" BEL
+        "input_sum/M_ctr_q_16" BEL "input_sum/M_ctr_q_17" BEL
+        "input_sum/M_ctr_q_18" BEL "input_sum/M_ctr_q_19" BEL
         "input_sum/sync/M_pipe_q_1" BEL "input_sum/sync/Mshreg_M_pipe_q_1" BEL
-        "input_carry/M_ctr_q_1" BEL "input_carry/M_ctr_q_2" BEL
-        "input_carry/M_ctr_q_3" BEL "input_carry/M_ctr_q_4" BEL
-        "input_carry/M_ctr_q_5" BEL "input_carry/M_ctr_q_6" BEL
-        "input_carry/M_ctr_q_7" BEL "input_carry/M_ctr_q_8" BEL
-        "input_carry/M_ctr_q_9" BEL "input_carry/M_ctr_q_10" BEL
-        "input_carry/M_ctr_q_11" BEL "input_carry/M_ctr_q_12" BEL
-        "input_carry/M_ctr_q_13" BEL "input_carry/M_ctr_q_14" BEL
-        "input_carry/M_ctr_q_15" BEL "input_carry/M_ctr_q_16" BEL
-        "input_carry/M_ctr_q_17" BEL "input_carry/M_ctr_q_18" BEL
-        "input_carry/M_ctr_q_19" BEL "input_carry/M_ctr_q_0" BEL
+        "input_carry/M_ctr_q_0" BEL "input_carry/M_ctr_q_1" BEL
+        "input_carry/M_ctr_q_2" BEL "input_carry/M_ctr_q_3" BEL
+        "input_carry/M_ctr_q_4" BEL "input_carry/M_ctr_q_5" BEL
+        "input_carry/M_ctr_q_6" BEL "input_carry/M_ctr_q_7" BEL
+        "input_carry/M_ctr_q_8" BEL "input_carry/M_ctr_q_9" BEL
+        "input_carry/M_ctr_q_10" BEL "input_carry/M_ctr_q_11" BEL
+        "input_carry/M_ctr_q_12" BEL "input_carry/M_ctr_q_13" BEL
+        "input_carry/M_ctr_q_14" BEL "input_carry/M_ctr_q_15" BEL
+        "input_carry/M_ctr_q_16" BEL "input_carry/M_ctr_q_17" BEL
+        "input_carry/M_ctr_q_18" BEL "input_carry/M_ctr_q_19" BEL
         "input_carry/sync/M_pipe_q_1" BEL "input_carry/sync/Mshreg_M_pipe_q_1"
         BEL "dec_ctr/dct/M_bit_count_q_0" BEL "dec_ctr/dct/M_bit_count_q_1"
-        BEL "dec_ctr/dct/M_bit_count_q_2" BEL "seg_display/ctr/M_ctr_q_0" BEL
-        "seg_display/ctr/M_ctr_q_1" BEL "seg_display/ctr/M_ctr_q_2" BEL
-        "seg_display/ctr/M_ctr_q_3" BEL "seg_display/ctr/M_ctr_q_4" BEL
-        "seg_display/ctr/M_ctr_q_5" BEL "seg_display/ctr/M_ctr_q_6" BEL
-        "seg_display/ctr/M_ctr_q_7" BEL "seg_display/ctr/M_ctr_q_8" BEL
-        "seg_display/ctr/M_ctr_q_9" BEL "seg_display/ctr/M_ctr_q_10" BEL
+        BEL "dec_ctr/dct/M_bit_count_q_2" BEL "input_bit1/M_ctr_q_0" BEL
+        "input_bit1/M_ctr_q_1" BEL "input_bit1/M_ctr_q_2" BEL
+        "input_bit1/M_ctr_q_3" BEL "input_bit1/M_ctr_q_4" BEL
+        "input_bit1/M_ctr_q_5" BEL "input_bit1/M_ctr_q_6" BEL
+        "input_bit1/M_ctr_q_7" BEL "input_bit1/M_ctr_q_8" BEL
+        "input_bit1/M_ctr_q_9" BEL "input_bit1/M_ctr_q_10" BEL
+        "input_bit1/M_ctr_q_11" BEL "input_bit1/M_ctr_q_12" BEL
+        "input_bit1/M_ctr_q_13" BEL "input_bit1/M_ctr_q_14" BEL
+        "input_bit1/M_ctr_q_15" BEL "input_bit1/M_ctr_q_16" BEL
+        "input_bit1/M_ctr_q_17" BEL "input_bit1/M_ctr_q_18" BEL
+        "input_bit1/M_ctr_q_19" BEL "input_bit1/sync/M_pipe_q_1" BEL
+        "input_bit1/sync/Mshreg_M_pipe_q_1" BEL "input_bit2/M_ctr_q_0" BEL
+        "input_bit2/M_ctr_q_1" BEL "input_bit2/M_ctr_q_2" BEL
+        "input_bit2/M_ctr_q_3" BEL "input_bit2/M_ctr_q_4" BEL
+        "input_bit2/M_ctr_q_5" BEL "input_bit2/M_ctr_q_6" BEL
+        "input_bit2/M_ctr_q_7" BEL "input_bit2/M_ctr_q_8" BEL
+        "input_bit2/M_ctr_q_9" BEL "input_bit2/M_ctr_q_10" BEL
+        "input_bit2/M_ctr_q_11" BEL "input_bit2/M_ctr_q_12" BEL
+        "input_bit2/M_ctr_q_13" BEL "input_bit2/M_ctr_q_14" BEL
+        "input_bit2/M_ctr_q_15" BEL "input_bit2/M_ctr_q_16" BEL
+        "input_bit2/M_ctr_q_17" BEL "input_bit2/M_ctr_q_18" BEL
+        "input_bit2/M_ctr_q_19" BEL "input_bit2/sync/M_pipe_q_1" BEL
+        "input_bit2/sync/Mshreg_M_pipe_q_1" BEL "input_bit3/M_ctr_q_0" BEL
+        "input_bit3/M_ctr_q_1" BEL "input_bit3/M_ctr_q_2" BEL
+        "input_bit3/M_ctr_q_3" BEL "input_bit3/M_ctr_q_4" BEL
+        "input_bit3/M_ctr_q_5" BEL "input_bit3/M_ctr_q_6" BEL
+        "input_bit3/M_ctr_q_7" BEL "input_bit3/M_ctr_q_8" BEL
+        "input_bit3/M_ctr_q_9" BEL "input_bit3/M_ctr_q_10" BEL
+        "input_bit3/M_ctr_q_11" BEL "input_bit3/M_ctr_q_12" BEL
+        "input_bit3/M_ctr_q_13" BEL "input_bit3/M_ctr_q_14" BEL
+        "input_bit3/M_ctr_q_15" BEL "input_bit3/M_ctr_q_16" BEL
+        "input_bit3/M_ctr_q_17" BEL "input_bit3/M_ctr_q_18" BEL
+        "input_bit3/M_ctr_q_19" BEL "input_bit3/sync/M_pipe_q_1" BEL
+        "input_bit3/sync/Mshreg_M_pipe_q_1" BEL "seg_display/ctr/M_ctr_q_0"
+        BEL "seg_display/ctr/M_ctr_q_1" BEL "seg_display/ctr/M_ctr_q_2" BEL
+        "seg_display/ctr/M_ctr_q_5" BEL "seg_display/ctr/M_ctr_q_3" BEL
+        "seg_display/ctr/M_ctr_q_4" BEL "seg_display/ctr/M_ctr_q_6" BEL
+        "seg_display/ctr/M_ctr_q_7" BEL "seg_display/ctr/M_ctr_q_10" BEL
+        "seg_display/ctr/M_ctr_q_8" BEL "seg_display/ctr/M_ctr_q_9" BEL
         "seg_display/ctr/M_ctr_q_11" BEL "seg_display/ctr/M_ctr_q_12" BEL
-        "seg_display/ctr/M_ctr_q_13" BEL "seg_display/ctr/M_ctr_q_14" BEL
-        "seg_display/ctr/M_ctr_q_15" BEL "seg_display/ctr/M_ctr_q_17";
+        "seg_display/ctr/M_ctr_q_15" BEL "seg_display/ctr/M_ctr_q_13" BEL
+        "seg_display/ctr/M_ctr_q_14" BEL "seg_display/ctr/M_ctr_q_17";
 TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
 SCHEMATIC END;
 

@@ -58,24 +58,51 @@ module mojo_top_0 (
     .in(M_input_sum_in),
     .out(M_input_sum_out)
   );
+  wire [1-1:0] M_input_bit1_out;
+  reg [1-1:0] M_input_bit1_in;
+  button_conditioner_2 input_bit1 (
+    .clk(clk),
+    .in(M_input_bit1_in),
+    .out(M_input_bit1_out)
+  );
+  wire [1-1:0] M_input_bit2_out;
+  reg [1-1:0] M_input_bit2_in;
+  button_conditioner_2 input_bit2 (
+    .clk(clk),
+    .in(M_input_bit2_in),
+    .out(M_input_bit2_out)
+  );
+  wire [1-1:0] M_input_bit3_out;
+  reg [1-1:0] M_input_bit3_in;
+  button_conditioner_2 input_bit3 (
+    .clk(clk),
+    .in(M_input_bit3_in),
+    .out(M_input_bit3_out)
+  );
   wire [16-1:0] M_state_machine_value;
   wire [3-1:0] M_state_machine_modee;
   reg [1-1:0] M_state_machine_rst;
   reg [1-1:0] M_state_machine_input_sum;
   reg [1-1:0] M_state_machine_input_carry;
   reg [1-1:0] M_state_machine_input_mode;
-  state_machine_5 state_machine (
+  reg [1-1:0] M_state_machine_input_bit1;
+  reg [1-1:0] M_state_machine_input_bit2;
+  reg [1-1:0] M_state_machine_input_bit3;
+  state_machine_8 state_machine (
     .clk(clk),
     .rst(M_state_machine_rst),
     .input_sum(M_state_machine_input_sum),
     .input_carry(M_state_machine_input_carry),
     .input_mode(M_state_machine_input_mode),
+    .input_bit1(M_state_machine_input_bit1),
+    .input_bit2(M_state_machine_input_bit2),
+    .input_bit3(M_state_machine_input_bit3),
     .value(M_state_machine_value),
     .modee(M_state_machine_modee)
   );
   wire [1-1:0] M_edge_detector_out;
   reg [1-1:0] M_edge_detector_in;
-  edge_detector_6 edge_detector (
+  edge_detector_9 edge_detector (
     .clk(clk),
     .in(M_edge_detector_in),
     .out(M_edge_detector_out)
@@ -84,7 +111,7 @@ module mojo_top_0 (
   wire [4-1:0] M_seg_display_sel;
   reg [16-1:0] M_seg_display_values;
   reg [4-1:0] M_seg_display_decimal;
-  multi_seven_seg_7 seg_display (
+  multi_seven_seg_10 seg_display (
     .clk(clk),
     .rst(rst),
     .values(M_seg_display_values),
@@ -94,14 +121,14 @@ module mojo_top_0 (
   );
   wire [3-1:0] M_dec_ctr_bit_count;
   reg [1-1:0] M_dec_ctr_inc;
-  multi_dec_ctr_8 dec_ctr (
+  multi_dec_ctr_11 dec_ctr (
     .clk(clk),
     .rst(rst),
     .inc(M_dec_ctr_inc),
     .bit_count(M_dec_ctr_bit_count)
   );
   wire [1-1:0] M_ctr_value;
-  counter_9 ctr (
+  counter_12 ctr (
     .clk(clk),
     .rst(rst),
     .value(M_ctr_value)
@@ -113,9 +140,15 @@ module mojo_top_0 (
     M_input_sum_in = io_input[1+0-:1];
     M_input_mode_in = io_input[2+0-:1];
     M_reset_cond_in = io_button[1+0-:1];
+    M_input_bit1_in = M_dec_ctr_bit_count[2+0-:1];
+    M_input_bit2_in = M_dec_ctr_bit_count[1+0-:1];
+    M_input_bit3_in = M_dec_ctr_bit_count[0+0-:1];
     M_state_machine_input_carry = M_input_carry_out;
     M_state_machine_input_sum = M_input_sum_out;
     M_state_machine_input_mode = M_input_mode_out;
+    M_state_machine_input_bit1 = M_input_bit1_out;
+    M_state_machine_input_bit2 = M_input_bit2_out;
+    M_state_machine_input_bit3 = M_input_bit3_out;
     M_state_machine_rst = M_reset_cond_out;
     M_reset_cond_in = ~rst_n;
     M_state_machine_rst = M_reset_cond_out;

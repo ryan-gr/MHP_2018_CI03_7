@@ -17,7 +17,8 @@ module mojo_top (
     input io_button [5],    // 5 buttons on IO Shield
     input io_dip [3][8], // DIP switches on IO Shield
     input io_input[3],
-    output auto_output[3]          ) {
+    output auto_output[3]
+              ) {
   
   sig rst;                  // reset signal
   
@@ -28,6 +29,10 @@ module mojo_top (
     button_conditioner input_mode;
     button_conditioner input_carry;
     button_conditioner input_sum;
+    button_conditioner input_bit1;
+    button_conditioner input_bit2;
+    button_conditioner input_bit3;
+
     state_machine state_machine;
     edge_detector edge_detector (#RISE(1), #FALL(0));    
     
@@ -45,10 +50,18 @@ module mojo_top (
     input_sum.in = io_input[1];
     input_mode.in = io_input[2];
     reset_cond.in = io_button[1];
+    input_bit1.in = dec_ctr.bit_count[2];
+    input_bit2.in = dec_ctr.bit_count[1];
+    input_bit3.in = dec_ctr.bit_count[0];
+
   //Through the button button_conditioner, the inputs to fpga through the 3 io_input port are passed onto the state machines
     state_machine.input_carry = input_carry.out; 
     state_machine.input_sum = input_sum.out;
     state_machine.input_mode = input_mode.out;
+  //3 bits input from the decimal counter is passed on to the state_machine as 3 1 bit value
+    state_machine.input_bit1 = input_bit1.out;
+    state_machine.input_bit2 = input_bit2.out;
+    state_machine.input_bit3 = input_bit3.out;    
     state_machine.rst = reset_cond.out; //Center button will reset state_machine
     
     reset_cond.in = ~rst_n; // input raw inverted reset signal
@@ -60,12 +73,14 @@ module mojo_top (
     
     edge_detector.in = ctr.value;
     dec_ctr.inc = edge_detector.out;    
-    seg_display.values = state_machine.value; 
+    seg_display.values = state_machine.value; //Displaying value from the state_machine on the seven segments 
+    // The same three port on the FPGAnis being used to control A,B and Cin. 
+    //Depending on the mode, the port is either controlled by the switches or automatically by the fpga
     if(state_machine.modee == 0){
-        auto_output = io_dip[0][2:0];}
+        auto_output = io_dip[0][2:0];}      
     else{
         auto_output = dec_ctr.bit_count;}
-    seg_display.decimal = 4b0000; //To control decimal point, i
+    seg_display.decimal = 4b0000; //To control decimal point
     io_seg = ~seg_display.seg;
     io_sel = ~seg_display.sel;
 

@@ -3,5 +3,5 @@ NET "io_input<1>" LOC = P50 | IOSTANDARD = LVTTL | PULLDOWN;
 NET "io_input<2>" LOC = P51 | IOSTANDARD = LVTTL | PULLDOWN;
 
 NET "auto_output<0>" LOC = P34 | IOSTANDARD = LVTTL;
-NET "auto_output<1>" LOC = P33 | IOSTANDARD = LVTTL;
+NET "auto_output<1>" LOC = P32 | IOSTANDARD = LVTTL;
 NET "auto_output<2>" LOC = P35 | IOSTANDARD = LVTTL;

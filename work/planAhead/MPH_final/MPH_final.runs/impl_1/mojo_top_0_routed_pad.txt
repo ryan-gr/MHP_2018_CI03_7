@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Oct 03 17:31:12 2018
+Thu Oct 04 16:14:27 2018
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -51,8 +51,8 @@ Pinout by Pin Number:
 |P29       |              |IOBS     |IO_L36N_3                 |UNUSED   |           |3             |          |         |           |         |         |          |           |                |
 |P30       |              |IOBM     |IO_L36P_3                 |UNUSED   |           |3             |          |         |           |         |         |          |           |                |
 |P31       |              |         |VCCO_3                    |         |           |3             |          |         |           |         |3.30     |          |           |                |
-|P32       |              |IOBS     |IO_L2N_3                  |UNUSED   |           |3             |          |         |           |         |         |          |           |                |
-|P33       |auto_output[1]|IOB      |IO_L2P_3                  |OUTPUT   |LVTTL      |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
+|P32       |auto_output[1]|IOB      |IO_L2N_3                  |OUTPUT   |LVTTL      |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
+|P33       |              |IOBM     |IO_L2P_3                  |UNUSED   |           |3             |          |         |           |         |         |          |           |                |
 |P34       |auto_output[0]|IOB      |IO_L1N_VREF_3             |OUTPUT   |LVTTL      |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |P35       |auto_output[2]|IOB      |IO_L1P_3                  |OUTPUT   |LVTTL      |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |P36       |              |         |VCCAUX                    |         |           |              |          |         |           |         |3.3      |          |           |                |
