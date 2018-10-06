@@ -38,22 +38,22 @@ In Auto mode, the output is sent out using a 3 bit data. Each bit is connected t
 
 #### Modules
 6 modules were created in the process of the project
-###### 1.mojo_top.luc
+1.mojo_top.luc
 The main file for running the mojo.
-###### 2.state_machin.luc
+2.state_machin.luc
 The finite state machine which contains our code to switch between the 2 modes and what to display on the seven_segement
-###### 3.digit_lut.luc
+3.digit_lut.luc
 To configure the seven_segment to display it as a number.
-###### 4.multi_seven_seg.luc
+4.multi_seven_seg.luc
 With reference to the book "Learning FPGAs"- Alongside with decoder and digit_lut, numbers can be displayed on the led segment easily. 
-###### 5.decimal_counter.luc
+5.decimal_counter.luc
 Increment loop for Auto mode
-###### 6.multi_dec_ctr.luc
+6.multi_dec_ctr.luc
 Trigger for the loop in Auto mode
 
 ### About us
-Project brought to you by
-1002744 Ivan Chuang
-1002769 Ryan Yu
-1002845 Tee Zhi Yao
+Project brought to you by \\
+1002744 Ivan Chuang \\ 
+1002769 Ryan Yu \\ 
+1002845 Tee Zhi Yao \\
 1003031 Tan Zhao Tong
