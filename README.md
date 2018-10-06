@@ -52,8 +52,8 @@ Increment loop for Auto mode
 Trigger for the loop in Auto mode
 
 ### About us
-Project brought to you by \\
-1002744 Ivan Chuang \\ 
-1002769 Ryan Yu \\ 
-1002845 Tee Zhi Yao \\
+Project brought to you by \
+1002744 Ivan Chuang \
+1002769 Ryan Yu \
+1002845 Tee Zhi Yao \
 1003031 Tan Zhao Tong
