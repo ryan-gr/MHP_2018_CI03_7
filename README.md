@@ -3,7 +3,7 @@ Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
-![alt text]((Images/Full_adder.png "Schematic"){:height="50%" width="50%"}) <br/>
+![alt text](Images/Full_adder.png "Schematic") <br/>
 A full adder follows a truth table as such. <br/>
 ![alt text](Images/Truth_table_3.png "Schematic")<br/>
 
@@ -43,7 +43,7 @@ FPGA would process the input from the full adder and display it as a 2 bit data.
 In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 bit output is displayed on the right 3 seven segment. <br/>
 ![alt text](Images/Mode_2.png "Auto Mode") <br/>
 By making use of a clock, the 3 bit output is increment by 1 in every clock cycle. <br/>
-![alt text](Images/AutoState.png "Sub-state Machine") <br/>
+![alt text](Images/New_AutoState.png "Sub-state Machine") <br/>
 
 #### Modules
 6 modules were created in the process of the project
