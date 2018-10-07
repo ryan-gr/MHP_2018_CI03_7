@@ -37,8 +37,7 @@ Manual mode is represented by 1 on the first seven segment from the left, while 
 
 
 #### Manual Mode
-In Manual mode, 3 switches are programmed to output data into the full adder as A,B, Cin respectively. The inputs can be seen by the led that are above the switches. \ 
-*Insert image of the dip switch with the led*
+In Manual mode, 3 switches are programmed to output data into the full adder as A,B, Cin respectively. The inputs can be seen by the led that are above the switches. <br/> 
 Dip switch 0 controls A <br/>
 Dip switch 1 controls B <br/>
 Dip switch 2 controls Cin <br/>
