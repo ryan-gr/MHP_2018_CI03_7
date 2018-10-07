@@ -26,7 +26,7 @@ Our Mojo comprises of 2 modes, Manual and Auto. These are the 2 main states for 
 ###### Toggling between modes
 Dip switch 23 is configured to switch between the mode. \
 Manual mode is represented by 1 on the first seven segment from the left, while Auto mode is represented by 2.
-![alt text](Images/SwitchState.png "Main State Machine")
+<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/SwitchState.png" width="480">
 
 
 #### Manual Mode
