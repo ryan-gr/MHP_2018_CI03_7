@@ -43,8 +43,7 @@ FPGA would process the input from the full adder and display it as a 2 bit data.
 In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 bit output is displayed on the right 3 seven segment. <br/>
 ![alt text](Images/Mode_2.png "Auto Mode") <br/>
 By making use of a clock, the 3 bit output is increment by 1 in every clock cycle. <br/>
-![test image size](/Images/New_AutoState.jpg){:class="img-responsive"}
-![test image size](/Images/New_AutoState.jpg){:height="50%" width="50%"}
+![alt text](Images/New_AutoState.jpg)
 #### Modules
 6 modules were created in the process of the project
 ##### 1.mojo_top.luc
