@@ -3,7 +3,7 @@ Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
-![alt text](Images/full_adder.png "Schematic") <br/>
+![alt text](Images/Full_adder.png "Schematic") <br/>
 A full adder follows a truth table as such. <br/>
 ![alt text](Images/Truth_table_3.png "Schematic") <br/>
 
