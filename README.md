@@ -22,7 +22,7 @@ FPGA
 ### About FPGA
 FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing – hence "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL). <br/>
 <br/>
-FPGAs contain an array of programmable logic blocks, and a hierarchy of reconfigurable interconnects that allow the blocks to be "wired together", like many logic gates that can be inter-wired in different configurations. Logic blocks can be configured to perform complex combinational functions, or merely simple logic gates like AND and XOR. In most FPGAs, logic blocks also include memory elements, which may be simple flip-flops or more complete blocks of memory. 
+FPGAs contain an array of programmable logic blocks, and a hierarchy of reconfigurable interconnects that allow the blocks to be "wired together", like many logic gates that can be inter-wired in different configurations. Logic blocks can be configured to perform complex combinational functions, or merely simple logic gates like AND and XOR. In most FPGAs, logic blocks also include memory elements, which may be simple flip-flops or more complete blocks of memory. <br/>
 https://en.wikipedia.org/wiki/Field-programmable_gate_array 
 
 For our project, we used Lucid language to programme our Mojo.
@@ -51,7 +51,7 @@ FPGA would process the input from the full adder and display it as a 2 bit data.
 In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 bit output is displayed on the right 3 seven segment. <br/>
 ![alt text](Images/Mode_2.png "Auto Mode")
 By making use of a clock, the 3 bit output is increment by 1 in every clock cycle. <br/>
-![alt text](Images/AutoState.png "Sub-state Machine" width="300" height="300")
+![alt text](Images/AutoState.png "Sub-state Machine")
 
 #### Modules
 6 modules were created in the process of the project
