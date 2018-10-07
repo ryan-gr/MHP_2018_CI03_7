@@ -44,7 +44,7 @@ In Auto mode, the output is sent out using a 3 bit data. Each bit is connected t
 ![alt text](Images/Mode_2.png "Auto Mode") <br/>
 By making use of a clock, the 3 bit output is increment by 1 in every clock cycle. <br/>
 <img src="Images/New_AutoState.png width="40%">
-![An image](images/an_image.jpg) <!-- .element height="50%" width="50%" -->
+![An image](Images/New_AutoState.png) <!-- .element height="50%" width="50%" -->
 #### Modules
 6 modules were created in the process of the project
 ##### 1.mojo_top.luc
