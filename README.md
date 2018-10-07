@@ -5,7 +5,7 @@ Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
 ![alt text](Images/Full_adder.png "Logic Schematic") <br/>
 A full adder follows a truth table as such. <br/>
-![alt text](Images/Truth_table_3.png "Full adder truth table")<br/>
+<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/Truth_table_3.png " width="480">
 
 ## Bonus
 Aim: FPGA tester works automatically by testing all the possible inputs using Finite State Machine(FSM).
@@ -13,7 +13,7 @@ HDL was written with proper comments, neat, and modular. Interface to 1-bit full
 FPGA
 
 ### About FPGA
-FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing – hence "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL). <br/>
+FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing – henc4 "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL). <br/>
 <br/>
 FPGAs contain an array of programmable logic blocks, and a hierarchy of reconfigurable interconnects that allow the blocks to be "wired together", like many logic gates that can be inter-wired in different configurations. Logic blocks can be configured to perform complex combinational functions, or merely simple logic gates like AND and XOR. In most FPGAs, logic blocks also include memory elements, which may be simple flip-flops or more complete blocks of memory. <br/>
 https://en.wikipedia.org/wiki/Field-programmable_gate_array 
@@ -26,7 +26,7 @@ Our Mojo comprises of 2 modes, Manual and Auto. These are the 2 main states for 
 ###### Toggling between modes
 Dip switch 23 is configured to switch between the mode. \
 Manual mode is represented by 1 on the first seven segment from the left, while Auto mode is represented by 2.
-<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/SwitchState.png" width="480">
+<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/SwitchState.png" width="680">
 
 
 #### Manual Mode
