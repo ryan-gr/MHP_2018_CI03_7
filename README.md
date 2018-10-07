@@ -1,11 +1,15 @@
-# MHP_2018_CI03_7
+﻿# MHP_2018_CI03_7
+Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.be 
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
-*Insert Image* 
+![alt text](Images/full_adder.psd "Schematic")
 
 ## Bonus
-Aim: To test our Full-adder both manually and automatically
+Aim: FPGA tester works automatically by testing all the possible inputs using Finite State Machine(FSM).
+HDL was written with proper comments, neat, and modular. Interface to 1-bit full adder allows manual testing and automatic testing using 
+FPGA
+
 ### About FPGA
 FPGA is a field-programmable gate array (FPGA) is an integrated circuit designed to be configured after manufacturing – hence "field-programmable". The FPGA configuration is generally specified using a hardware description language (HDL). <br/>
 <br/>
@@ -20,6 +24,8 @@ Our Mojo comprises of 2 modes, Manual and Auto. These are the 2 main states for 
 ###### Toggling between modes
 Dip switch 23 is configured to switch between the mode. \
 Manual mode is represented by 1 on the first seven segment from the left, while Auto mode is represented by 2.
+![alt text](Images/SwitchState.png "Main State Machine")
+
 
 #### Manual Mode
 In Manual mode, 3 switches are programmed to output data into the full adder as A,B, Cin respectively. The inputs can be seen by the led that are above the switches. \ 
@@ -30,11 +36,11 @@ Dip switch 2 controls Cin <br/>
 
 Through the full-adder, the FPGA receives input about the state of SUM & Carry. <br/>
 FPGA would process the input from the full adder and display it as a 2 bit data. <br/>
-*Insert sample image of seven segment*
+![alt text](Images/Mode_1.png "Manual Mode")
 
 #### Auto Mode
 In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 input is displayed on the right 3 seven segment and it loops from 000 to 111. <br/>
-*Insert sample image of seven segment*
+![alt text](Images/Mode_2.png "Auto Mode")
 
 #### Modules
 6 modules were created in the process of the project
