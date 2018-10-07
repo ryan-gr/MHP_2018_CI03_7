@@ -3,9 +3,9 @@ Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
-![alt text](Images/Full_adder.png "Schematic"){:height="50%" width="50%"} <br/>
+![alt text]((Images/Full_adder.png "Schematic"){:height="50%" width="50%"}) <br/>
 A full adder follows a truth table as such. <br/>
-![alt text](Images/Truth_table_3.png "Schematic"){:height="50%" width="50%"} <br/>
+![alt text](Images/Truth_table_3.png "Schematic")<br/>
 
 ## Bonus
 Aim: FPGA tester works automatically by testing all the possible inputs using Finite State Machine(FSM).
