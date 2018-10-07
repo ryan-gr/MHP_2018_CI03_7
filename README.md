@@ -1,12 +1,5 @@
 ﻿# MHP_2018_CI03_7
 Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.be 
-#### Index
-Full Adder <br/>
-Bonus <br/>
-About FPGA <br/>
-Mojo <br/>
-Modules <br/>
-About Us <br/>
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
