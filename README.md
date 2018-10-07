@@ -1,9 +1,18 @@
 ﻿# MHP_2018_CI03_7
 Watch our video here: https://www.youtube.com/watch?v=tTV4EAYKJ-w&feature=youtu.be 
+#### Index
+Full Adder <br/>
+Bonus <br/>
+About FPGA <br/>
+Mojo <br/>
+Modules <br/>
+About Us <br/>
 
 ## Full Adder
 Our full adder is created with 2 XOR Logic gates and 3 NAND Logic gates. <br/>
-![alt text](Images/full_adder.psd "Schematic")
+![alt text](Images/full_adder.psd "Schematic") <br/>
+A full adder follows a truth table as such. <br/>
+![alt text](Images/Truth_table_3.png "Schematic") <br/>
 
 ## Bonus
 Aim: FPGA tester works automatically by testing all the possible inputs using Finite State Machine(FSM).
@@ -39,8 +48,10 @@ FPGA would process the input from the full adder and display it as a 2 bit data.
 ![alt text](Images/Mode_1.png "Manual Mode")
 
 #### Auto Mode
-In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 input is displayed on the right 3 seven segment and it loops from 000 to 111. <br/>
+In Auto mode, the output is sent out using a 3 bit data. Each bit is connected to an individual output port. The 3 bit output is displayed on the right 3 seven segment. <br/>
 ![alt text](Images/Mode_2.png "Auto Mode")
+By making use of a clock, the 3 bit output is increment by 1 in every clock cycle.
+![alt text](Images/AutoState.png "")
 
 #### Modules
 6 modules were created in the process of the project
