@@ -14,6 +14,10 @@ module digit_lut (
         6: segs = 7b1111101;
         7: segs = 7b0000111;
         8: segs = 7b1111111;
+        11: segs = 7b1110111; //A
+        12: segs = 7b0111000; //L
+        13: segs = 7b0111110; //U
+        14: segs = 7b1111100; //B
         default: segs = 7b0000000;
           }
         }

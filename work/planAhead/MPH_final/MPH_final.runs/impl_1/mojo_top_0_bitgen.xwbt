@@ -1,8 +1,0 @@
-INTSTYLE=pa
-INFILE=C:\Users\ZhiYao\Desktop\Term 4\Computational Structure\MOJOJOJOOOOOOO\MPH_final\work\planAhead\MPH_final\MPH_final.runs\impl_1\mojo_top_0_routed.ncd
-OUTFILE=C:\Users\ZhiYao\Desktop\Term 4\Computational Structure\MOJOJOJOOOOOOO\MPH_final\work\planAhead\MPH_final\MPH_final.runs\impl_1\mojo_top_0.bit
-FAMILY=Spartan6
-PART=xc6slx9-2tqg144
-WORKINGDIR=C:\Users\ZhiYao\Desktop\Term 4\Computational Structure\MOJOJOJOOOOOOO\MPH_final\work\planAhead\MPH_final\MPH_final.runs\impl_1
-LICENSE=WebPack
-USER_INFO=211598806_0_0_013
