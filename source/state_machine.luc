@@ -1,0 +1,73 @@
+// There are 2 modes, Manual which is represented by 0 while Auto is represented by 1
+// There are 6 1-bit input that are set up through edge_detector in mojo_top.
+// For Manual mode : input_sum, input_carry, input_mode are external inputs that are connected to the 3 io_input that is defined in custom.ucf
+// For Auto mode: input_bit1, input_bit2, input_bit3 is connected to 1 bit of bit_count from multi_dec_ctr.
+module state_machine (
+    input clk,  // clock
+    input rst,  // reset
+    output value[4][4], // display_value
+    input input_sum, // SUM input from mojo_top
+    input input_carry, // CARRY input from mojo_top
+    input input_mode, // mode_input from mojo_top
+    output modee[3],
+    input input_bit1,
+    input input_bit2,
+    input input_bit3
+    ){
+  
+  .clk(clk){
+    .rst(rst){
+      fsm state = {MANUAL,AUTO};
+}
+    dff display_value[4][4]; // Size of LED segments
+    dff mode[3];
+
+        }
+  
+  
+always {
+    value = display_value.q; // output value to be displayed on the segment 
+    modee = mode.q; // output mode
+    case (state.q) { // FSM case statement
+      state.MANUAL: // Manual 
+          mode.d = 0;
+          // input_mode is connected to dip switch 23(last)       
+          if (input_mode) //When switch is HIGH, change over to AUTO mode 
+            {state.d = state.AUTO;}  
+          else if (input_sum & input_carry) // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d1, 4d9, 4d1, 4d1};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
+          else if (input_sum) // if SUM value is HIGH
+            {display_value.d = {4d1, 4d9, 4d0, 4d1};} // Display 1_01    
+          else if (input_carry) // if CARRY value is HIGH
+            {display_value.d = {4d1, 4d9, 4d1, 4d0};} // Display 1_10        
+          else
+            {display_value.d = {4d1, 4d9, 4d0, 4d0};} // Display 1_00    
+
+      state.AUTO: // AUTO: increment counters
+          mode.d = 1;
+          if (!input_mode) 
+            {state.d = state.MANUAL;}  
+          // input_bit1 represents the least significant bit while input_bit3 represents the most significant bit in the bit count.
+          if (input_bit1 & input_bit2 & input_bit3) // if bit value from multi_dec_ctr is 111
+            {display_value.d = {4d2, 4d1, 4d1, 4d1};} // Display 2111
+          else if (input_bit1 & input_bit2) 
+            {display_value.d = {4d2, 4d1, 4d1, 4d0};} // Display 2110          
+          else if (input_bit1 & input_bit3) 
+            {display_value.d = {4d2, 4d1, 4d0, 4d1};} // Display 2101   
+          else if (input_bit2 & input_bit3) 
+            {display_value.d = {4d2, 4d0, 4d1, 4d1};} // Display 2011          
+          else if (input_bit1) 
+            {display_value.d = {4d2, 4d1, 4d0, 4d0};} // Display 2100 
+          else if (input_bit2) 
+            {display_value.d = {4d2, 4d0, 4d1, 4d0};} // Display 2010 
+          else if (input_bit3) // if CARRY value is HIGH
+            {display_value.d = {4d2, 4d0, 4d0, 4d1};} // Display 2001 
+          else
+            {display_value.d = {4d2, 4d0, 4d0, 4d0};} // Display 2000
+        
+                    
+    }
+     }
+}
+  
+  

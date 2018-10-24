@@ -3,7 +3,7 @@ module mojo_top (
     input rst_n,            // reset button (active low)
     input cclk,             // configuration clock, AVR ready when high
     output spi_miso,        // AVR SPI MISO
-    output led[8],
+    input led[8],
     input spi_ss,           // AVR SPI Slave Select
     input spi_mosi,         // AVR SPI MOSI
     input spi_sck,          // AVR SPI Clock
@@ -11,102 +11,79 @@ module mojo_top (
     input avr_tx,           // AVR TX (FPGA RX)
     output avr_rx,          // AVR RX (FPGA TX)
     input avr_rx_busy,      // AVR RX buffer full
-    output io_led [24],   // LEDs on IO Shield
+    output io_led [3][8],   // LEDs on IO Shield
     output io_seg [8],      // 7-segment LEDs on IO Shield
     output io_sel [4],      // Digit select on IO Shield
     input io_button [5],    // 5 buttons on IO Shield
-    input io_dip [24] // DIP switches on IO Shield
-
+    input io_dip [3][8], // DIP switches on IO Shield
+    input io_input[3],
+    output auto_output[3]
               ) {
-//  pipeline button_cond[1] (#DEPTH(5), .clk(clk));
+  
   sig rst;                  // reset signal
-  alu alu;
+  
   .clk(clk) {
-   reset_conditioner reset_cond;
-    button_conditioner button_condd;
-    edge_detector edge (#RISE(1), #FALL(0));
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    button_conditioner input_mode;
+    button_conditioner input_carry;
+    button_conditioner input_sum;
+    button_conditioner input_bit1;
+    button_conditioner input_bit2;
+    button_conditioner input_bit3;
+
+    state_machine state_machine;
+    edge_detector edge_detector (#RISE(1), #FALL(0));    
+    
         .rst(rst) {
       multi_seven_seg seg_display; //Connecting to multi_seven_seg which would help displaying on the segment
- 
-      fsm state = {ALUFN,INPUT_A,INPUT_B,AUTO,DISPLAY};
+      multi_dec_ctr dec_ctr; //
+      counter ctr (#SIZE(1), #DIV(24));      
 
                 }
-    dff display_value[4][4]; // Size of LED segments
-    dff mode[5];
-    dff alufn_st[6];
-    dff input_a_st[16];
-    dff input_b_st[16];
-    dff send[1];
-    dff check_input[8];
   }
-  bin_to_dec digits (#DIGITS(4));
+  always {
+    io_led = io_dip; //Connect all dip switches to io_led   
+  //io_input are input ports declared in custom.ucf and input received is passed on to button_conditioner
+    input_carry.in = io_input[0]; 
+    input_sum.in = io_input[1];
+    input_mode.in = io_input[2];
+    reset_cond.in = io_button[1];
+    input_bit1.in = dec_ctr.bit_count[2];
+    input_bit2.in = dec_ctr.bit_count[1];
+    input_bit3.in = dec_ctr.bit_count[0];
 
-   always{
-    io_led = io_dip;
+  //Through the button button_conditioner, the inputs to fpga through the 3 io_input port are passed onto the state machines
+    state_machine.input_carry = input_carry.out; 
+    state_machine.input_sum = input_sum.out;
+    state_machine.input_mode = input_mode.out;
+  //3 bits input from the decimal counter is passed on to the state_machine as 3 1 bit value
+    state_machine.input_bit1 = input_bit1.out;
+    state_machine.input_bit2 = input_bit2.out;
+    state_machine.input_bit3 = input_bit3.out;    
+    state_machine.rst = reset_cond.out; //Center button will reset state_machine
+    
     reset_cond.in = ~rst_n; // input raw inverted reset signal
+    state_machine.rst = reset_cond.out; //Center button will reset state_machine
     rst = reset_cond.out;   // conditioned reset
     spi_miso = bz;          // not using SPI
     spi_channel = bzzzz;    // not using flags
     avr_rx = bz;            // not using serial port
     
-    button_condd.in = io_button[3];
-//    send.d = io_button[1];
-//    temp_send.d= send.q;
-    edge.in = button_condd.out;
-    send.d = edge.out;
+    edge_detector.in = ctr.value;
+    dec_ctr.inc = edge_detector.out;    
+    seg_display.values = state_machine.value; //Displaying value from the state_machine on the seven segments 
+    // The same three port on the FPGAnis being used to control A,B and Cin. 
+    //Depending on the mode, the port is either controlled by the switches or automatically by the fpga
+    if(state_machine.modee == 0){
+        auto_output = io_dip[0][2:0];}      
+    else{
+        auto_output = dec_ctr.bit_count;}
     seg_display.decimal = 4b0000; //To control decimal point
     io_seg = ~seg_display.seg;
     io_sel = ~seg_display.sel;
-//storing alufn, a and b data in a register    
-    alu.alufn = alufn_st.q;
-    alu.a = input_a_st.q;
-    alu.b = input_b_st.q;
-    digits.value = 0;
-    led = check_input.q;
+
     
-    case (state.q) { 
-      state.ALUFN: 
-          mode.d = 0;
-          if (send.q)
-          {state.d = state.INPUT_A;
-          alufn_st.d = io_dip[5:0];
-          //Modify so that the led will not light up is ALUFN input is invalid
-          check_input.d[7] = 1;}          
-          else 
-            {display_value.d = {4d11, 4d12, 4d13, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
-
-      state.INPUT_A:  
-          mode.d = 1;
-          if (send.q)
-          {state.d = state.INPUT_B;
-          input_a_st.d = io_dip[15:0];
-          check_input.d[6] = 1;}
-          else 
-            {display_value.d = {4d11, 4d9, 4d9, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
-
-      state.INPUT_B: 
-          mode.d = 3;
-          if (send.q)
-          {state.d = state.DISPLAY;
-        input_b_st.d = io_dip[15:0];
-          check_input.d[5] = 1;}
-          else 
-            {display_value.d = {4d14, 4d9, 4d9, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
-      state.DISPLAY:
-          mode.d = 4;
-        check_input.d[2:0] = alu.zvn[2] + alu.zvn[1] + alu.zvn[0];
-
-        if(io_dip[23]){io_led = alufn_st.q;}
-        else if(io_dip[22]){io_led = input_a_st.q;}
-        else if(io_dip[21]){io_led = input_b_st.q;}
-        else{ digits.value = alu.alu;
-        display_value.d = digits.digits;
-          }
-      state.AUTO:
-          mode.d = 5;                  
-                   
-    }
-   seg_display.values = display_value.q; //Displaying value from the state_machine on the seven segments 
-
   }
 }
