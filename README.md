@@ -44,9 +44,9 @@ In Auto mode, the output is sent out using a 3 bit data. Each bit is connected t
 ![alt text](Images/Mode_2.png "Auto Mode") <br/>
 By making use of a clock, the 3 bit output is increment by 1 in every clock cycle. <br/>
 <img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/New_AutoState.png" width="480"> <br/>
-Our MOJO with the Full adder. <br/>
-<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/FA_mojo_mode1.jpeg" width="370" height="533" >
-<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/FA_mojo_mode2.jpeg" width="370" height="533">
+Our MOJO with the Full adder.
+<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/FA_mojo_mode1.jpeg" width="320">
+<img src="https://github.com/teezhiyao/MHP_2018_CI03_7/blob/master/Images/FA_mojo_mode2.jpeg" width="320">
 
  #### Modules
 6 modules were created in the process of the project
